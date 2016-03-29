@@ -129,7 +129,7 @@ This resource uses the [Template Content](https://github.com/poise/poise#templat
 
 ## Contributing
 
-Please refer to [CONTRIBUTING.md]('./CONTRIBUTING.md').
+Please refer to [CONTRIBUTING.md](./CONTRIBUTING.md).
 
 ## Extra
 
