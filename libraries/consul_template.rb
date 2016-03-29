@@ -21,7 +21,10 @@ module ConsulTemplateCookbook
       actions(:create, :remove)
       default_action(:create)
 
-      attribute(:name, kind_of: String, required: true, name_attribute: true)
+      # @!attribute name
+      # The name of the Consul Template configuration file
+      # @return [String]
+      attribute(:name, kind_of: String, regex: /\A\w+\.json\z/, name_attribute: true)
       # exposes source, cookbook, content, options attributes
       attribute('', template: true)
       # @!attribute conf_dir
