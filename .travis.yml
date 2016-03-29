@@ -14,3 +14,6 @@ branches:
     - master
 matrix:
   fast_finish: true
+addons:
+    code_climate:
+        repo_token: edc557717ef934f7516ee7cc6ef1e47302f3b63f6106580200a5875681649764
