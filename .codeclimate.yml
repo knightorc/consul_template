@@ -1,0 +1,15 @@
+---
+engines:
+  foodcritic:
+    enabled: true
+  rubocop:
+    enabled: true
+ratings:
+  paths:
+    - "attributes/**.rb"
+    - "libraries/**.rb"
+    - "recipes/**.rb"
+exclude_paths:
+  - spec/**/*
+  - "**/vendor/**/*"
+  - "libraries/matchers.rb"

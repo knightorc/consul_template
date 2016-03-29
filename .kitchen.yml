@@ -1,0 +1,31 @@
+---
+driver:
+  name: vagrant
+
+provisioner:
+  name: chef_zero
+
+platforms:
+  - name: centos-6.7
+    attributes:
+      consul_template:
+        config:
+          options:
+            syslog:
+              enabled: true
+              facility: LOCAL0
+  - name: win2k12
+
+suites:
+  - name: default
+    run_list:
+      - recipe[consul_template::default]
+    attributes:
+      consul_template:
+        config:
+          options:
+            vault:
+              address: 'https://vault.server.example.com'
+              token: 'your_token_here'
+              ssl:
+                verify: false
