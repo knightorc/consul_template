@@ -81,6 +81,7 @@ module ConsulTemplateCookbook
         service.command(new_resource.command)
         service.directory(new_resource.data_dir)
         service.user(new_resource.user)
+        service.environment(new_resource.environment)
         service.restart_on_update(true)
         service.options(:systemd, template: 'consul_template:systemd.service.erb')
         service.options(:sysvinit, template: 'consul_template:sysvinit.service.erb')
