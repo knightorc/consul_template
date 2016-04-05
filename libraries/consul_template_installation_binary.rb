@@ -67,7 +67,7 @@ module ConsulTemplateCookbook
             path join_path(options[:install_path], new_resource.version)
             source archive_url
             checksum options[:archive_checksum]
-            not_if { ::File.exist?(consul_template_program) }
+            not_if { ::File.exist?(program) }
           end
         end
       end
@@ -81,7 +81,7 @@ module ConsulTemplateCookbook
         end
       end
 
-      def consul_template_program
+      def program
         @program ||= join_path(options[:install_path], new_resource.version, 'consul-template')
         windows? ? @program + '.exe' : @program
       end

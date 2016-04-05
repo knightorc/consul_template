@@ -37,7 +37,7 @@ install = consul_template_installation service_name do
 end
 
 consul_template_service service_name do |r|
-  program install.consul_template_program
+  program install.program
   conf_dir config.conf_dir
   node['consul_template']['service'].each_pair { |k, v| r.send(k, v) }
 end

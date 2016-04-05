@@ -57,6 +57,10 @@ module ConsulTemplateCookbook
       windows? ? join_path(install_path, 'data') : join_path('/var/lib', 'consul-template')
     end
 
+    def consul_template_program
+      node['consul_template']['service']['program']
+    end
+
     # Returns Consul Template version folders that don't match the
     # version we're installing
     def other_versions

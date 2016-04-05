@@ -5,6 +5,7 @@
 # Copyright 2016, Vision Critical Inc.
 #
 require 'poise'
+require_relative './helpers'
 
 module ConsulTemplateCookbook
   module Resource
@@ -15,6 +16,7 @@ module ConsulTemplateCookbook
     # @since 0.1.0
     class ConsulTemplateInstallation < Chef::Resource
       include Poise(inversion: true)
+      include ::ConsulTemplateCookbook::Helpers
       provides(:consul_template_installation)
       actions(:create, :remove)
       default_action(:create)
@@ -24,8 +26,8 @@ module ConsulTemplateCookbook
       # @return [String]
       attribute(:version, kind_of: String, name_attribute: true)
 
-      def consul_template_program
-        @program ||= provider_for_action(:consul_template_program).consul_template_program
+      def program
+        consul_template_program || provider_for_action(:consul_template_installation).program
       end
     end
   end

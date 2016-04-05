@@ -32,4 +32,5 @@ default['consul_template']['service']['nssm_params'] = {
 ###
 # default['consul_template']['archive_url']
 # default['consul_template']['install_path']
+# default['consul_template']['service']['program']
 # default['poise-service']['consul-template']['template'] = 'cookbook:erb_file'
