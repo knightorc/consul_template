@@ -30,6 +30,7 @@ module ConsulTemplateCookbook
           end
 
           nssm 'consul-template' do
+            extend ::ConsulTemplateCookbook::NSSMHelpers
             action :install
             program new_resource.program
             params new_resource.nssm_params.select { |_k, v| v != '' }
