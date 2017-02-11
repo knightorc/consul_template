@@ -1,5 +1,10 @@
 # Change Log
 
+0.1.1
+-----
+- [chen01] - need to specify extension to avoid namespace clash
+
+
 ## [v0.1.0](https://github.com/visioncritical/consul_template/tree/v0.1.0) (2016-04-06)
 
 
