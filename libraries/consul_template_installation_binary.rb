@@ -99,6 +99,10 @@ module ConsulTemplateCookbook
         case [node['os'], tag].join('-')
         when 'darwin-i386'
           case resource.version
+          when '0.18.1' then '44c26daf01517e493de15e0d93afa500cb38fffdd12192abc58a9f85734224a0'
+          when '0.18.0' then 'a3cb126143275374234255fae929c06193434761cc365854e87cf0fa552312fd'
+          when '0.16.0' then '326f1bc31e770758b952f7313afcf89e7227ee2a472f4e6fe5c0f763debc48ee'
+          when '0.15.0' then '40a0b46fa13f69be1a5148a5e9d1d6420a61576170a52bacd51578a2584d9c47'
           when '0.14.0' then '1dd6db71e745fface4aa15f1ac9ca72ca746077fe62b8e60abf2955b19ec2f98'
           when '0.13.0' then '3570ac6762d860d5a87c26d9fc6d97df577bd2bdcfba804a91d89a9703d2ab27'
           when '0.12.2' then '2bb97c26b028ebfbb5ca9a4178d3f8c92426acfc44cc15b7b5efa9ab2bc88832'
@@ -110,6 +114,10 @@ module ConsulTemplateCookbook
           end
         when 'darwin-amd64'
           case resource.version
+          when '0.18.1' then 'e807abf95061177241d8fcc6b80fee635d236a47a8befc39600a67e4cfda2f83'
+          when '0.18.0' then 'a496c786f10e1abfc4c607637477fdcee829e3a25caa37ad4ae69714a927ea15'
+          when '0.16.0' then '5f932f3601a1b5ff9e205f130635fa62638ea66e335a420457e7df39d95e4796'
+          when '0.15.0' then '1ecc48bc3c5df7537e4857693322b46dc5db5563b84e8225b24df439e287f9e3'
           when '0.14.0' then '37fc8aca13020180b367bb1d277242adb11526394f4f0ce1c3d5f0ec8d2071d8'
           when '0.13.0' then 'ea7ec46b5922f497b5ffea8a7de2eb33268fc7ff18bd20e1a35af9334c98b5b9'
           when '0.12.2' then 'a9ab8e16cb02729153ec72a53f9f9f73efa0259521200467482fb34bd3e893b1'
@@ -121,6 +129,10 @@ module ConsulTemplateCookbook
           end
         when 'freebsd-i386'
           case resource.version
+          when '0.18.1' then '00fc58ed5c2dca1362018b84dd3ede684df447022dd0170c347387a0bb3178b1'
+          when '0.18.0' then 'cabd90220af55ce9341c3bd52b69095f60fe1dadc8144c1ce8ec0ec4059ef0f0'
+          when '0.16.0' then '332dd67a2e7f525caae155103cf9b99b85c2a900c65b19df254e7bbb75c34514'
+          when '0.15.0' then '0e235220afc23d874b44683209fb696a2fe3d17ef7a3ef7ebb4d6033d48ccdc1'
           when '0.14.0' then '6e7f0912affde1f09c7828dc33da61170d204e151ef2bfd64062e6ff9b10e7eb'
           when '0.13.0' then 'e5d4fa5012328c6bac6a61ca9ec2d32ed7fb9febd2585c20a0fb8f199d4e073f'
           when '0.12.2' then '366cdb13be1206e676d5a93f634c33ea11ab6bcb6d59ace2c3004e81cb719d7d'
@@ -132,6 +144,10 @@ module ConsulTemplateCookbook
           end
         when 'freebsd-amd64'
           case resource.version
+          when '0.18.1' then '5f752338a02fd6557cf780676ba74f7f4cf3c35b6c9f0e48af50b2182a4f95cc'
+          when '0.18.0' then '4eb4fff3e8d54d084c60f4cb41acf2045750cfd73b9cf2a031500854bd1cef35'
+          when '0.16.0' then '12524bc543c9ce6c964b18177106a0b77c47b0afcff058db5c9bf21e0bc48b76'
+          when '0.15.0' then '2ba21a8ce67b8e44178cadba8542e9c6eac6a37372b6f0682f405e24d0c7947b'
           when '0.14.0' then 'f666a91006230acceac5f65f28d095cd84746686fc35189e5843b6c8198c5d70'
           when '0.13.0' then '633cb879fad680d3a285f03bc365e34ad190e14f212ac9764e47f8fed8641551'
           when '0.12.2' then '7f82bc088587bc1b93868f506866810eac249f3469f881dde0ec09010d0f29dc'
@@ -143,6 +159,10 @@ module ConsulTemplateCookbook
           end
         when 'linux-i386'
           case resource.version
+          when '0.18.1' then '6704de6125f4d1aa5008d9a0a77daa709802d6f30ffccf139e8ff05065f42143'
+          when '0.18.0' then 'e9c5d012cba33966b31c91b2638b63ad52f35037719628fbfbd351c5a4551f2c'
+          when '0.16.0' then '497235d49a3c32b605416536a721dbcecb817d75f41f42a5a3e3dc7d6d74f7ff'
+          when '0.15.0' then '65c6207993649f44b7316723c3e02d184556b133443b3b2a7e2a3e6720753680'
           when '0.14.0' then '4026cbd5e5a0bbaf851768de1e9d5bfa6bb5a0e73cddb7458974e8400e92786d'
           when '0.13.0' then '47b2bca5c0b544e0a598bd7a317775095311f333cab5df9c2bee4acd27ddb4eb'
           when '0.12.2' then 'ec65fd9172cc991ba9c30d8e6b04ddd45c37af489af07682ff96be7d361cbc60'
@@ -154,6 +174,10 @@ module ConsulTemplateCookbook
           end
         when 'linux-amd64'
           case resource.version
+          when '0.18.1' then '99dcee0ea187c74d762c5f8f6ceaa3825e1e1d4df6c0b0b5b38f9bcb0c80e5c8'
+          when '0.18.0' then 'f7adf1f879389e7f4e881d63ef3b84bce5bc6e073eb7a64940785d32c997bc4b'
+          when '0.16.0' then '064b0b492bb7ca3663811d297436a4bbf3226de706d2b76adade7021cd22e156'
+          when '0.15.0' then 'b7561158d2074c3c68ff62ae6fc1eafe8db250894043382fb31f0c78150c513a'
           when '0.14.0' then '7c70ea5f230a70c809333e75fdcff2f6f1e838f29cfb872e1420a63cdf7f3a78'
           when '0.13.0' then '6c3017dee5c75eebdecb83cd0a64ce04cd91dd8660aea432b479c1b807b06ed0'
           when '0.12.2' then 'a8780f365bf5bfad47272e4682636084a7475ce74b336cdca87c48a06dd8a193'
@@ -165,6 +189,10 @@ module ConsulTemplateCookbook
           end
         when 'netbsd-i386'
           case resource.version
+          when '0.18.1' then '3dd4bc9709cea674a50dec1c51c65fcb54444c70ca6f528013ac1d5043d9ee2c'
+          when '0.18.0' then '5bf61c6ca8e677e77489cf53f8245ecda185e0b289e259f08a13c4f4b1236c68'
+          when '0.16.0' then '237a7f0b2bec644ae8a949d32228b02a37854eaebc9f618c0ee2c2f5b0b5d480'
+          when '0.15.0' then 'ca1de7a352621f706eeda69729e339aaa6f2eec7ad9e82672321ad60d7fb3917'
           when '0.14.0' then 'b90a1b9f12de1171cbca1239d532152b74e5aa2d46dbcf3e4b5d5d49f65e6bca'
           when '0.13.0' then 'f3895a12dcd204200d235092a7237624aed351f2eeac8417e3aaa9f1fe594a65'
           when '0.12.2' then '7a8896bce321fd70de876c547e2ecfc3d5c58297e126eef9d125f00daf84e9f5'
@@ -176,6 +204,10 @@ module ConsulTemplateCookbook
           end
         when 'netbsd-amd64'
           case resource.version
+          when '0.18.1' then '791b24397f2fd754a39a4190a7d830d198028d68eee030f3e15b4f3a59799bd0'
+          when '0.18.0' then '3bc621c0004c1847182c4133a2fa05b8c27fc65075b057891ad4d931d5b39a27'
+          when '0.16.0' then 'b169061ea5ddcd785833eceaf7ef9eca2a9fb83f579f851dd4c9419ea2834905'
+          when '0.15.0' then '0320466c83d256ae9a2a9104b8d14b24a17ad240ec9254ee75e7b9cb3aba8dee'
           when '0.14.0' then '25a7c3f0ee60bdac33e1fe9b03972f68611e97f20bddf07432d159ab75f8a1d0'
           when '0.13.0' then 'c543f98ddfe91c6cc6740554d0d79e1cad1fe90abd5c56ae712da91ce28e0773'
           when '0.12.2' then 'd22c4720168da8ec14785bfef7cf6e0e5facd5a1ca7fdc3e7de8d427b9a626a8'
@@ -187,6 +219,10 @@ module ConsulTemplateCookbook
           end
         when 'openbsd-i386'
           case resource.version
+          when '0.18.1' then '396da8f55bc5001d66766c93dca345bf080ade93b1c5d3783037571db4cfaade'
+          when '0.18.0' then '4362bbac5049b4217956133f4df68f02650efe2ecdf812a4a072f4b99f208995'
+          when '0.16.0' then 'fcd723775c57b1b15d8402a80e859f8ddc52bc11f1ebc5515514a14149c63d5f'
+          when '0.15.0' then 'c276cce7f8f23d45ce846e948ed88b46e53748511277f3c9a966d68716948fff'
           when '0.14.0' then '04c9d6a67566abcc78fbb67f8ce7c6bf2df3b90d9df0a27846e4b596221754d7'
           when '0.13.0' then 'c65b21ec280a72f94acf60c155133d81ebbba4cef425fcdca2f872b6435ef98f'
           when '0.12.2' then 'ec4737a38eb43eb373991209c9fe9abe5c1b2ac41074ba1493eeb5f889072396'
@@ -198,6 +234,10 @@ module ConsulTemplateCookbook
           end
         when 'openbsd-amd64'
           case resource.version
+          when '0.18.1' then '59a0297cf2ad1058626409ee38192d5c17446d7e61e015421aadb47fc8a76698'
+          when '0.18.0' then 'fcf05b93273e415fa5054956ea37b4d4bd34066b11cb07d238183264937a2017'
+          when '0.16.0' then '602705d76906b23271195911878836100c7e0bc2434f6fc126e722588647e2f8'
+          when '0.15.0' then 'f510571a47f42a03e6de7caa1f477673ea8e58764b17849dc7103ecca2aa63d9'
           when '0.14.0' then '2d1e7121d80ba31c262910714bc5587b6f70abcd613f5d26f8b3c1366c36b77d'
           when '0.13.0' then 'df1343655e916960c030a7909cc80f9792076ea8cd0cc80daa083da321bb6e1c'
           when '0.12.2' then '1fd417adb65ef8d071d5d27fbaaa20cbc974df0a6c5c8c46c3054aaf71c4f67a'
@@ -209,6 +249,10 @@ module ConsulTemplateCookbook
           end
         when 'solaris-amd64'
           case resource.version
+          when '0.18.1' then 'a584acda799ef405c068ea5a6f817af3301a2b555927e5abeb2503b3390ab012'
+          when '0.18.0' then '8713d1ba5209a1dbec729df9f2698c033be770bb1a54f1c056a2beffd6ad9812'
+          when '0.16.0' then 'd862879d5d0b85c1f6e49c459ab4a89530cf99d9d7ec65e7a51ee3cb9543bfab'
+          when '0.15.0' then '092b339a1e3487b979caa26aa276a91a4b5f7c964971bc9793f07154ad44ddf7'
           when '0.14.0' then '5ab285e00ce76f129d28297b0321ca786457daaa9fbe890275bf2bca078966fa'
           when '0.13.0' then 'b13080b6f04a0ae929c0fc0aa1ffb860a10a36c7f59ce50d2425d7d149305028'
           when '0.12.2' then 'f9df7b0431915ff41e2e718f38c5c5b992bec578636bf5b57d09eb598c25c932'
@@ -220,6 +264,10 @@ module ConsulTemplateCookbook
           end
         when 'windows-i386'
           case resource.version
+          when '0.18.1' then '8ce401ce123dda00e072e2ec21104ef9345b03ff6690096926cdd652714e399b'
+          when '0.18.0' then '5d331a8a05f8dfc39cbb244775731a758fcea4de9d7f0926ada79d86455836b3'
+          when '0.16.0' then '293b5009167eb611cacc2fb2910b8f92c1b7bce12d19d87ca158a78049463c98'
+          when '0.15.0' then '7959b7624eef71fcac531bfa908c245d26ba8363bf61f19b4e027e649791dfd9'
           when '0.14.0' then '2dbc3d130356f9a52c2a0e1c045fc109bf06fe6692f0ece94ef1dfb894a37dca'
           when '0.13.0' then '905036a586526cc148c0af7cf26cbf036683938676ee7cd394946ff1e45d52b1'
           when '0.12.2' then 'a6e11131caaa910c260812186510ac0b5e5df727af57eb0ee1a1250c08fb68d0'
@@ -231,6 +279,10 @@ module ConsulTemplateCookbook
           end
         when 'windows-amd64'
           case resource.version
+          when '0.18.1' then 'cd2a265044bb64796fb8ecc97d1024fe4c24d1275e5783ef54acdf7e58fc4558'
+          when '0.18.0' then '0ca5f3897b30c52e4b362656d22184c5e3187d56ea6dc915e621dfea2aef662d'
+          when '0.16.0' then '824eff8a540510dd185023def1b957a09dc62bc2cbaab820525ea038c6bd5d0d'
+          when '0.15.0' then '40ff124f91b5ec1405621c0b72e26e2877b40a6217770488464b8e97015f1648'
           when '0.14.0' then '48dccd0134df43b6ebdceddc4185e8c25fea169e43feeccb7ca4e42ce299bc2c'
           when '0.13.0' then '8ce115ce8cc623ac18c795d17db66d6c8b3f421ce6497221d5886c34b00ff8cc'
           when '0.12.2' then '6dad0d278afcdadf2e99a88c48d2743f282e4548dea3e4d11fa3f8ff7e8b1c8f'
