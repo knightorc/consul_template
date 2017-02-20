@@ -1,5 +1,9 @@
 # Change Log
 
+0.1.2
+-----
+- [chen01] - updated to include binaries of versions 0.15.0 to 0.18.1
+
 0.1.1
 -----
 - [chen01] - need to specify extension to avoid namespace clash
