@@ -4,7 +4,7 @@ maintainer_email 'Riley Shott <riley.shott@visioncritical.com>'
 license          'MIT'
 description      'Installs/Configures consul_template'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version          '0.1.2'
+version          '0.1.3'
 
 supports 'ubuntu', '>= 12.04'
 supports 'redhat', '>= 6.4'
