@@ -6,6 +6,7 @@
 #
 require 'poise'
 require_relative './helpers'
+require_relative './nssm_helpers'
 
 module ConsulTemplateCookbook
   module Provider
@@ -20,6 +21,8 @@ module ConsulTemplateCookbook
     class ConsulTemplateInstallationBinary < Chef::Provider
       include Poise(inversion: :consul_template_installation)
       include ::ConsulTemplateCookbook::Helpers
+      include ::ConsulTemplateCookbook::NSSMHelpers
+
       provides(:binary)
       inversion_attribute('consul_template')
 
