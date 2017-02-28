@@ -50,6 +50,7 @@ module ConsulTemplateCookbook
               end
 
               batch 'Set nssm parameter - Application' do
+                extend ::ConsulTemplateCookbook::NSSMHelpers
                 code %(#{nssm_exe} set consul-template Application "#{new_resource.command}")
                 only_if { new_version?(new_resource.command) }
                 notifies :run, 'powershell_script[Trigger consul-template restart]', :delayed
@@ -63,6 +64,7 @@ module ConsulTemplateCookbook
             # Check if the service is running, but don't bother if we're already
             # changing some nssm parameters
             powershell_script 'Trigger consul-template restart' do
+              extend ::ConsulTemplateCookbook::NSSMHelpers
               code 'restart-service consul-template'
               not_if { nssm_service_status?(%w(SERVICE_RUNNING)) && mismatch_params.empty? }
             end
@@ -89,11 +91,7 @@ module ConsulTemplateCookbook
       def action_disable
         notifying_block do
           # nssm resource doesn't stop the service before it removes it
-          powershell_script 'Stop consul-template' do
-            action :run
-            code 'stop-service consul-template'
-            only_if { nssm_service_installed? && nssm_service_status?(%w(SERVICE_RUNNING SERVICE_PAUSED)) }
-          end
+          stop_consul_template
 
           nssm 'consul-template' do
             action :remove
