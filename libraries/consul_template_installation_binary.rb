@@ -50,17 +50,18 @@ module ConsulTemplateCookbook
         }
 
         notifying_block do
-          directory join_path(options[:install_path], new_resource.version) do
-            recursive true
-          end
-
           # Remove any version that isn't the one we're using
+          stop_consul_template unless other_versions.empty?
           other_versions.each do |dir|
             directory "Remove version - #{dir}" do
               path dir
               action :delete
               recursive true
             end
+          end
+
+          directory join_path(options[:install_path], new_resource.version) do
+            recursive true
           end
 
           zipfile options[:archive_basename] do
