@@ -4,6 +4,7 @@
 -----
 - [chen01] - added service stop before removing older versions
            - add nssmhelper extentions inside resources
+           - HOTFIX: add not_if root guard for poise service user creation 
 
 0.1.2
 -----

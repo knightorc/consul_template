@@ -23,6 +23,7 @@ node.default['nssm']['install_location'] = '%WINDIR%'
 poise_service_user user do
   group group
   not_if { node.windows? }
+  not_if { node['consul_template']['service']['user'].eql? 'root' }
 end
 
 config = consul_template_config service_name do |r|
