@@ -84,6 +84,7 @@ module ConsulTemplateCookbook
           action :run
           code 'stop-service consul-template'
           only_if { nssm_service_installed? && nssm_service_status?(%w(SERVICE_RUNNING SERVICE_PAUSED)) }
+          only_if { node.windows? }
       end
     end
 

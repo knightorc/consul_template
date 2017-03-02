@@ -21,6 +21,7 @@ node.default['nssm']['install_location'] = '%WINDIR%'
 ###
 
 poise_service_user user do
+  extend ::ConsulTemplateCookbook::NSSMHelpers
   group group
   not_if { node.windows? }
   not_if { node['consul_template']['service']['user'].eql? 'root' }
