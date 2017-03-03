@@ -81,9 +81,11 @@ module ConsulTemplateCookbook
     def stop_consul_template
       powershell_script 'Stop consul-template' do
           extend ::ConsulTemplateCookbook::NSSMHelpers
+          extend ::ConsulTemplateCookbook::Helpers
           action :run
           code 'stop-service consul-template'
           only_if { nssm_service_installed? && nssm_service_status?(%w(SERVICE_RUNNING SERVICE_PAUSED)) }
+          only_if { windows? }
       end
     end
 

@@ -4,6 +4,8 @@
 -----
 - [chen01] - added service stop before removing older versions
            - add nssmhelper extentions inside resources
+           - HOTFIX: add not_if root guard for poise service user creation 
+           - HOTHOTFIX: add guard to not use service stop unless windows
 
 0.1.2
 -----
