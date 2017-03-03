@@ -91,7 +91,7 @@ module ConsulTemplateCookbook
       def action_disable
         notifying_block do
           # nssm resource doesn't stop the service before it removes it
-          stop_consul_template
+          ps_stop_consul_template
 
           nssm 'consul-template' do
             action :remove

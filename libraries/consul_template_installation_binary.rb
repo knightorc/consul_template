@@ -54,7 +54,7 @@ module ConsulTemplateCookbook
 
         notifying_block do
           # Stop service if updating version (only on windows)
-          stop_consul_template if (windows? && !other_versions.empty?)
+          ps_stop_consul_template if (windows? && !other_versions.empty?)
           # Remove any version that isn't the one we're using
           other_versions.each do |dir|
             directory "Remove version - #{dir}" do
