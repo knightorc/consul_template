@@ -78,14 +78,12 @@ module ConsulTemplateCookbook
       expected_status.include? shell_out!(%("#{nssm_exe}" status consul-template), returns: [0]).stdout.delete("\0").strip
     end
 
-    def stop_consul_template
+    def ps_stop_consul_template
       powershell_script 'Stop consul-template' do
           extend ::ConsulTemplateCookbook::NSSMHelpers
-          extend ::ConsulTemplateCookbook::Helpers
           action :run
           code 'stop-service consul-template'
           only_if { nssm_service_installed? && nssm_service_status?(%w(SERVICE_RUNNING SERVICE_PAUSED)) }
-          only_if { windows? }
       end
     end
 
