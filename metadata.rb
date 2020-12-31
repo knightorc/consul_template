@@ -13,9 +13,9 @@ supports 'windows'
 supports 'freebsd'
 
 depends 'poise', '~> 2.6'
-depends 'poise-service', '~> 1.1'
+depends 'poise-service', '~> 1.4'
 depends 'rubyzip', '~> 1.0'
-depends 'nssm', '~> 1.2'
+depends 'nssm'
 
 source_url 'https://github.com/visioncritical/consul_template' if respond_to?(:source_url)
 issues_url 'https://github.com/visioncritical/consul_template/issues' if respond_to?(:issues_url)
