@@ -2,7 +2,7 @@
 # Cookbook Name:: consul_template
 # Recipe:: default
 #
-# Copyright 2016, Vision Critical Inc.
+# Copyright 2017, Vision Critical Inc.
 #
 
 ###
@@ -12,9 +12,6 @@ version = node['consul_template']['version']
 service_name = node['consul_template']['service_name']
 user = node['consul_template']['service']['user']
 group = node['consul_template']['service']['group']
-
-# Windows only
-node.default['nssm']['install_location'] = '%WINDIR%'
 
 ###
 # Resources
