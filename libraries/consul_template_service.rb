@@ -48,7 +48,7 @@ module ConsulTemplateCookbook
       attribute(:program, kind_of: String)
 
       def command
-        if node.windows?
+        if windows?
           %(-config """#{conf_dir}""")
         else
           "#{program} -config #{conf_dir}"

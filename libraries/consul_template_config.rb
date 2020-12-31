@@ -16,7 +16,7 @@ module ConsulTemplateCookbook
     # @since 0.1.0
     class ConsulTemplateConfig < Chef::Resource
       include Poise(fused: true)
-      include ::ConsulTemplateCookbook::Helpers
+      extend ::ConsulTemplateCookbook::Helpers
       provides(:consul_template_config)
       actions(:create, :remove)
       default_action(:create)
@@ -56,8 +56,10 @@ module ConsulTemplateCookbook
         notifying_block do
           new_resource.config_directories.each do |dir|
             directory dir do
+              extend ConsulTemplateCookbook::Helpers
+
               recursive true
-              unless node.windows?
+              unless windows?
                 owner new_resource.owner
                 group new_resource.group
                 mode '0750'
@@ -65,9 +67,12 @@ module ConsulTemplateCookbook
             end
           end
 
-          file node.join_path(new_resource.conf_dir, 'main.json') do
+          file "consul_template_main_config" do
+            extend ConsulTemplateCookbook::Helpers
+            
+            path join_path(new_resource.conf_dir, 'main.json')
             content new_resource.to_json
-            unless node.windows?
+            unless windows?
               owner new_resource.owner
               group new_resource.group
               mode '0440'
@@ -78,8 +83,11 @@ module ConsulTemplateCookbook
 
       action(:remove) do
         notifying_block do
-          file node.join_path(new_resource.conf_dir, 'main.json') do
+          file "consul_template_main_config" do
+            extend ConsulTemplateCookbook::Helpers
+            
             action :delete
+            path join_path(new_resource.conf_dir, 'main.json')
           end
         end
       end

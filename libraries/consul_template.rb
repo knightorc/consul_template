@@ -65,12 +65,12 @@ module ConsulTemplateCookbook
       attribute(:backup, kind_of: [FalseClass, TrueClass])
 
       def conf_file
-        node.join_path(conf_dir, name)
+        join_path(conf_dir, name)
       end
 
       def template_file
         file = source.nil? ? name : source
-        node.join_path(template_dir, file.partition('.').first.concat('.ctmpl'))
+        join_path(template_dir, file.partition('.').first.concat('.ctmpl'))
       end
 
       def config_options
@@ -91,8 +91,10 @@ module ConsulTemplateCookbook
       action(:create) do
         notifying_block do
           file new_resource.conf_file do
+            extend ConsulTemplateCookbook::Helpers
+
             content new_resource.to_json
-            unless node.windows?
+            unless windows?
               owner new_resource.owner
               group new_resource.group
               mode '0440'
@@ -100,8 +102,10 @@ module ConsulTemplateCookbook
           end
 
           file new_resource.template_file do
+            extend ConsulTemplateCookbook::Helpers
+            
             content new_resource.content
-            unless node.windows?
+            unless windows?
               owner new_resource.owner
               group new_resource.group
               mode '0440'
