@@ -1,10 +1,15 @@
 # Change Log
 
+1.0.0
+-----
+- [Riley Shott] - Updated wrapper cookbook to reflect upstream changes. Now requires consul_template >= 1.0.0
+- [Brian Warsing] - HOTFIX: pin `nssm` dependency to 2.0 (2017-08-03)
+
 0.1.3
 -----
 - [chen01] - added service stop before removing older versions
            - add nssmhelper extentions inside resources
-           - HOTFIX: add not_if root guard for poise service user creation 
+           - HOTFIX: add not_if root guard for poise service user creation
            - HOTHOTFIX: add guard to not use service stop unless windows
            - HOTHOTHOTFIX: move guard out of the powershell resource
 

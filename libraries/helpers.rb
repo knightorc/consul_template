@@ -23,6 +23,12 @@ module ConsulTemplateCookbook
       path.gsub(::File::SEPARATOR, ::File::ALT_SEPARATOR || '\\') if path
     end
 
+    def install_path
+      install_path = node['consul_template']['install_path']
+      return install_path unless install_path.nil?
+      windows? ? join_path(program_files, 'consul-template') : join_path('/opt', 'consul-template')
+    end    
+
     # Simply using ::File.join was causing several attributes to return
     # strange values in the resources (e.g. "C:/Program Files/\\consul\\data")
     def join_path(*path)
@@ -33,27 +39,15 @@ module ConsulTemplateCookbook
       join_path('C:', 'Program Files') + (arch_64? ? '' : ' x(86)')
     end
 
-    def archive_url
-      archive_url = node['consul_template']['archive_url']
-      return archive_url unless archive_url.nil?
-      "https://releases.hashicorp.com/consul-template/%{version}/%{basename}" # rubocop:disable Style/StringLiterals
-    end
-
-    def install_path
-      install_path = node['consul_template']['install_path']
-      return install_path unless install_path.nil?
-      windows? ? join_path(program_files, 'consul-template') : join_path('/opt', 'consul-template')
-    end
-
-    def conf_dir
+    def default_conf_dir
       windows? ? join_path(install_path, 'conf.d') : join_path('/etc', 'consul-template', 'conf.d')
     end
 
-    def template_dir
+    def default_template_dir
       windows? ? join_path(install_path, 'templates') : join_path('/etc', 'consul-template', 'templates')
     end
 
-    def data_dir
+    def default_data_dir
       windows? ? join_path(install_path, 'data') : join_path('/var/lib', 'consul-template')
     end
 
@@ -74,5 +68,3 @@ module ConsulTemplateCookbook
     end
   end
 end
-
-Chef::Node.send(:include, ConsulTemplateCookbook::Helpers)

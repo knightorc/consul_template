@@ -100,5 +100,3 @@ module ConsulTemplateCookbook
     end
   end
 end
-
-Chef::Node.send(:include, ConsulTemplateCookbook::NSSMHelpers)

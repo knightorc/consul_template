@@ -35,14 +35,11 @@ module ConsulTemplateCookbook
       # @return [Hash]
       # @api private
       def self.default_inversion_options(node, new_resource)
-        archive_basename = binary_basename(node, new_resource)
-        url = node.archive_url % { version: new_resource.version, basename: archive_basename }
         super.merge(
           version: new_resource.version,
-          archive_url: url,
-          archive_basename: archive_basename,
-          archive_checksum: binary_checksum(node, new_resource),
-          install_path: node.install_path
+          archive_url: 'https://releases.hashicorp.com/consul-template/%{version}/%{basename}',
+          archive_basename: binary_basename(node, new_resource),
+          archive_checksum: binary_checksum(node, new_resource)
         )
       end
 
@@ -57,19 +54,19 @@ module ConsulTemplateCookbook
           ps_stop_consul_template if (windows? && !other_versions.empty?)
           # Remove any version that isn't the one we're using
           other_versions.each do |dir|
-            directory "Remove version - #{dir}" do
+            directory "remove_old_version_#{dir}" do
               path dir
               action :delete
               recursive true
             end
           end
 
-          directory join_path(options[:install_path], new_resource.version) do
+          directory join_path(install_path, options[:version]) do
             recursive true
           end
 
           zipfile options[:archive_basename] do
-            path join_path(options[:install_path], new_resource.version)
+            path join_path(install_path, options[:version])
             source archive_url
             checksum options[:archive_checksum]
             not_if { ::File.exist?(program) }
@@ -79,7 +76,7 @@ module ConsulTemplateCookbook
 
       def action_remove
         notifying_block do
-          directory join_path(options[:install_path], new_resource.version) do
+          directory join_path(install_path, options[:version]) do
             recursive true
             action :delete
           end
@@ -87,12 +84,12 @@ module ConsulTemplateCookbook
       end
 
       def program
-        @program ||= join_path(options[:install_path], new_resource.version, 'consul-template')
+        @program ||= join_path(install_path, options[:version], 'consul-template')
         windows? ? @program + '.exe' : @program
       end
 
       def self.binary_basename(node, resource)
-        if node.arch_64?
+        if node['kernel']['machine'] =~ /x86_64/
           ['consul-template', resource.version, node['os'], 'amd64'].join('_')
         else
           ['consul-template', resource.version, node['os'], '386'].join('_')
@@ -100,7 +97,7 @@ module ConsulTemplateCookbook
       end
 
       def self.binary_checksum(node, resource)
-        tag = node.arch_64? ? 'amd64' : '386'
+        tag = node['kernel']['machine'] =~ /x86_64/ ? 'amd64' : '386'
         case [node['os'], tag].join('-')
         when 'darwin-i386'
           case resource.version
