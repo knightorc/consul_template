@@ -1,5 +1,9 @@
 # Change Log
 
+## 2.0.0 (2017-10-03)
+* [Wade Peacock] - Updating our fork of consul-template. To divergent.
+                 - Make it work with nssm ~> 4.0
+                 - Removed duplicated """  that nssm ~> 4.0 litterally puts in
 1.0.0
 -----
 - [Riley Shott] - Updated wrapper cookbook to reflect upstream changes. Now requires consul_template >= 1.0.0
